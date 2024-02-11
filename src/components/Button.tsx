@@ -4,7 +4,7 @@ type ButtonProps = {
   name: string;
   onClick: () => void;
   className?: string;
-  style?: CSSProperties; // Add style here
+  style?: CSSProperties; 
 };
 
 function Button({ name, onClick, className = "", style }: ButtonProps) {
@@ -17,7 +17,7 @@ function Button({ name, onClick, className = "", style }: ButtonProps) {
 
   return (
     <button
-      className={`rounded-md text-white ${buttonColor} px-4 py-2 ${className}`} // Use className here
+      className={`rounded-md text-white ${buttonColor} px-4 py-2 ${className}`} 
       type="button"
       onClick={handleClick}
       style={style}
