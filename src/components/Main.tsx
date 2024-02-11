@@ -26,23 +26,25 @@ function Main() {
   };
 
   return (
-    <>
+    <div className="flex flex-col justify-center items-center h-screen p-5">
       {showGif ? (
         <GifDisplay
           gifSource={gifSource}
           altText={noClicked ? "I said Please" : "She said YES"}
-        /> 
+        />
       ) : (
-        <GifDisplay gifSource={please} altText="Please" /> 
+        <GifDisplay gifSource={please} altText="Please" />
       )}
-      <Button
-        name="Yes"
-        className={noClicked ? "bigger" : ""}
-        style={{ fontSize: `${yesButtonSize}px` }}
-        onClick={handleYesButtonClick}
-      />
-      <Button name="No" onClick={handleNoButtonClick} />
-    </>
+      <div className="flex gap-3">
+        <Button
+          name="Yes"
+          className={noClicked ? "bigger" : ""}
+          style={{ fontSize: `${yesButtonSize}px` }}
+          onClick={handleYesButtonClick}
+        />
+        <Button name="No" onClick={handleNoButtonClick} />
+      </div>
+    </div>
   );
 }
 
