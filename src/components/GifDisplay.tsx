@@ -1,5 +1,3 @@
-import React from "react";
-
 type GifDisplayProps = {
   gifSource: string;
   altText: string;

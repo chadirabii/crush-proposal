@@ -10,6 +10,7 @@ function Main() {
   const [yesButtonSize, setYesButtonSize] = useState(16);
   const [showGif, setShowGif] = useState(false);
   const [gifSource, setGifSource] = useState(please);
+  const [textIndex, setTextIndex] = useState(-1);
 
   const handleNoButtonClick = () => {
     console.log("No");
@@ -17,13 +18,36 @@ function Main() {
     setYesButtonSize((prevSize) => prevSize + 2);
     setGifSource(iSaidPlease);
     setShowGif(true);
+    setTextIndex(Math.floor(Math.random() * noText.length));
   };
 
   const handleYesButtonClick = () => {
     console.log("Yes");
     setGifSource(sheSaidYES);
     setShowGif(true);
+    setTextIndex(Math.floor(Math.random() * yesText.length));
+    setNoClicked(false); // Reset noClicked state
   };
+
+  const yesText = [
+    "Couldn't be happier! 😊",
+    "I'm so lucky! 🍀",
+    "I love you so much! 😘",
+    "You're the best! ❤️",
+    "My heart is full! ❤️",
+    "I'm so happy! 😊",
+    "Absolutely thrilled! 🎉",
+    "Forever grateful! 🙏",
+  ];
+
+  const noText = [
+    "I still love you! 😘",
+    "I'll keep trying! 💪",
+    "I'm sorry to hear that 😞",
+    "I still love you though! 😘",
+    "I'll keep trying! 💪",
+    "No matter what, I adore you! 💕",
+  ];
 
   return (
     <div className="flex flex-col justify-center items-center h-screen p-5">
@@ -35,14 +59,22 @@ function Main() {
       ) : (
         <GifDisplay gifSource={please} altText="Please" />
       )}
-      <div className="flex gap-3">
+      <h1 className="text-2xl font-bold mt-5">Will you be my Valentine?</h1>
+      {textIndex !== -1 && (
+        <h2>{noClicked ? noText[textIndex] : yesText[textIndex]}</h2>
+      )}
+      <div className=" ">
         <Button
           name="Yes"
           className={noClicked ? "bigger" : ""}
           style={{ fontSize: `${yesButtonSize}px` }}
           onClick={handleYesButtonClick}
         />
-        <Button name="No" onClick={handleNoButtonClick} />
+        <Button
+          name="No"
+          style={{ fontSize: `16px` }} // Set a fixed size for the "No" button
+          onClick={handleNoButtonClick}
+        />
       </div>
     </div>
   );
