@@ -1,12 +1,7 @@
-import Button from "./Button";
-
 function Main() {
-  return (
-    <>
-      <Button name="Yes" />
-      <Button name="No" />
-    </>
-  );
+  return <>
+  Button
+  </>;
 }
 
 export default Main;
