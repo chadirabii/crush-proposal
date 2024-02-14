@@ -10,7 +10,6 @@ function Main() {
   const [yesButtonSize, setYesButtonSize] = useState(16);
   const [showGif, setShowGif] = useState(false);
   const [gifSource, setGifSource] = useState(please);
-  const [textIndex, setTextIndex] = useState(-1);
   const [noButtonText, setNoButtonText] = useState("No");
   const [hideContent, setHideContent] = useState(false);
 
@@ -19,7 +18,6 @@ function Main() {
     setYesButtonSize((prevSize) => prevSize + 14);
     setGifSource(iSaidPlease);
     setShowGif(true);
-    setTextIndex(Math.floor(Math.random() * noText.length));
     setNoButtonText(getRandomNoText());
   };
 
