@@ -11,6 +11,7 @@ function Main() {
   const [showGif, setShowGif] = useState(false);
   const [gifSource, setGifSource] = useState(please);
   const [textIndex, setTextIndex] = useState(-1);
+  const [noButtonText, setNoButtonText] = useState("No");
 
   const handleNoButtonClick = () => {
     setNoClicked(true);
@@ -18,25 +19,15 @@ function Main() {
     setGifSource(iSaidPlease);
     setShowGif(true);
     setTextIndex(Math.floor(Math.random() * noText.length));
+    setNoButtonText(getRandomNoText());
   };
 
   const handleYesButtonClick = () => {
     setGifSource(sheSaidYES);
     setShowGif(true);
-    setTextIndex(Math.floor(Math.random() * yesText.length));
     setNoClicked(false);
+    setNoButtonText("No");
   };
-
-  const yesText = [
-    "Couldn't be happier! 😊",
-    "I'm so lucky! 🍀",
-    "I love you so much! 😘",
-    "You're the best! ❤️",
-    "My heart is full! ❤️",
-    "I'm so happy! 😊",
-    "Absolutely thrilled! 🎉",
-    "Forever grateful! 🙏",
-  ];
 
   const noText = [
     "I still love you! 😘",
@@ -46,6 +37,11 @@ function Main() {
     "I'll keep trying! 💪",
     "No matter what, I adore you! 💕",
   ];
+
+  const getRandomNoText = () => {
+    const randomIndex = Math.floor(Math.random() * noText.length);
+    return noText[randomIndex];
+  };
 
   return (
     <div className="flex flex-col justify-center items-center h-screen p-5">
@@ -58,9 +54,7 @@ function Main() {
         <GifDisplay gifSource={please} altText="Please" />
       )}
       <h1 className="text-2xl font-bold mt-5">Will you be my Valentine?</h1>
-      {textIndex !== -1 && (
-        <h2>{noClicked ? noText[textIndex] : yesText[textIndex]}</h2>
-      )}
+
       <div className=" ">
         <Button
           name="Yes"
@@ -69,7 +63,7 @@ function Main() {
           onClick={handleYesButtonClick}
         />
         <Button
-          name="No"
+          name={noButtonText}
           style={{ fontSize: `16px` }}
           onClick={handleNoButtonClick}
         />
