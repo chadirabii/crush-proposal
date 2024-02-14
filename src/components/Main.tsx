@@ -14,7 +14,7 @@ function Main() {
 
   const handleNoButtonClick = () => {
     setNoClicked(true);
-    setYesButtonSize((prevSize) => prevSize + 2);
+    setYesButtonSize((prevSize) => prevSize + 14);
     setGifSource(iSaidPlease);
     setShowGif(true);
     setTextIndex(Math.floor(Math.random() * noText.length));
@@ -24,7 +24,7 @@ function Main() {
     setGifSource(sheSaidYES);
     setShowGif(true);
     setTextIndex(Math.floor(Math.random() * yesText.length));
-    setNoClicked(false); 
+    setNoClicked(false);
   };
 
   const yesText = [
@@ -70,7 +70,7 @@ function Main() {
         />
         <Button
           name="No"
-          style={{ fontSize: `16px` }} 
+          style={{ fontSize: `16px` }}
           onClick={handleNoButtonClick}
         />
       </div>
