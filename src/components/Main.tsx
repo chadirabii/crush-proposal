@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Button from "./Button";
 import GifDisplay from "./GifDisplay";
 import please from "../assets/please.gif";
