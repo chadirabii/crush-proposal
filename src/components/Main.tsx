@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import Button from "./Button";
 import GifDisplay from "./GifDisplay";
 import please from "../assets/please.gif";
@@ -12,6 +12,7 @@ function Main() {
   const [gifSource, setGifSource] = useState(please);
   const [textIndex, setTextIndex] = useState(-1);
   const [noButtonText, setNoButtonText] = useState("No");
+  const [hideContent, setHideContent] = useState(false);
 
   const handleNoButtonClick = () => {
     setNoClicked(true);
@@ -25,6 +26,7 @@ function Main() {
   const handleYesButtonClick = () => {
     setGifSource(sheSaidYES);
     setShowGif(true);
+    setHideContent(true);
     setNoClicked(false);
     setNoButtonText("No");
   };
@@ -53,21 +55,24 @@ function Main() {
       ) : (
         <GifDisplay gifSource={please} altText="Please" />
       )}
-      <h1 className="text-2xl font-bold mt-5">Will you be my Valentine?</h1>
-
-      <div className=" ">
-        <Button
-          name="Yes"
-          className={noClicked ? "bigger" : ""}
-          style={{ fontSize: `${yesButtonSize}px` }}
-          onClick={handleYesButtonClick}
-        />
-        <Button
-          name={noButtonText}
-          style={{ fontSize: `16px` }}
-          onClick={handleNoButtonClick}
-        />
-      </div>
+      {!hideContent && (
+        <>
+          <h1 className="text-2xl font-bold mt-5">Will you be my Valentine?</h1>
+          <div className=" ">
+            <Button
+              name="Yes"
+              className={noClicked ? "bigger" : ""}
+              style={{ fontSize: `${yesButtonSize}px` }}
+              onClick={handleYesButtonClick}
+            />
+            <Button
+              name={noButtonText}
+              style={{ fontSize: `16px` }}
+              onClick={handleNoButtonClick}
+            />
+          </div>
+        </>
+      )}
     </div>
   );
 }
