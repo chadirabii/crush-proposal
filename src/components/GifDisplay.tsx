@@ -11,8 +11,8 @@ const GifDisplay = ({ gifSource, altText }: GifDisplayProps) => {
       style={{
         width: "100%",
         height: "auto",
-        maxWidth: "200px",
-        maxHeight: "200px",
+        maxWidth: "300px",
+        maxHeight: "300px",
       }}
     />
   );
